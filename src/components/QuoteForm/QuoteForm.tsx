@@ -1,20 +1,26 @@
 import { Box, Button, Stack, TextInput } from "@react-native-material/core"
 import { useState } from "react"
 import { GestureResponderEvent } from "react-native"
+import { useNavigate } from "react-router-native"
 
 interface QuoteFormProps {
-  onSave?: (quote: string, author: string) => void
+  onSave?: (quote: string, author: string) => Promise<unknown>
 }
 
 const QuoteForm = ({
-  onSave = (quote: string, author: string) => {},
+  onSave = (quote: string, author: string) => Promise.resolve(),
 }: QuoteFormProps) => {
   const [author, setAuthor] = useState<string | undefined>(undefined)
   const [quote, setQuote] = useState<string | undefined>(undefined)
+  const navigate = useNavigate()
 
   const onPress = (event: GestureResponderEvent) => {
     event.preventDefault()
     onSave(quote, author)
+      .then(() => {
+        navigate("/")
+      })
+      .catch((error) => console.log(error))
   }
 
   return (

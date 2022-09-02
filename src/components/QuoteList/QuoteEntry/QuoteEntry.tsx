@@ -9,12 +9,12 @@ const QuoteEntry = ({ entry }: QuoteEntryProps) => {
   const { author, quote } = entry
   return (
     <Surface
-      elevation={8}
+      elevation={4}
       category="medium"
       style={{
         marginHorizontal: 16,
-        marginVertical: 8,
-        padding: 24,
+        marginVertical: 16,
+        padding: 16,
       }}
     >
       <Text variant="h6" color="primary">

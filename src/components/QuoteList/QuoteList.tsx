@@ -1,4 +1,4 @@
-import { Stack, Text } from "@react-native-material/core"
+import { Text } from "@react-native-material/core"
 import { FlatList, SafeAreaView } from "react-native"
 import { Quote } from "../../domain/dataInterfaces"
 import QuoteEntry from "./QuoteEntry"
@@ -18,6 +18,7 @@ const QuoteList = ({ quotes }: QuoteListProps) => {
         <SafeAreaView
           style={{
             flex: 1,
+            backgroundColor: 'lightgrey'
           }}
         >
           <FlatList
