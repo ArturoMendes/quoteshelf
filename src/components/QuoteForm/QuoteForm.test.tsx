@@ -18,7 +18,7 @@ const useNavigateSpy = useNavigate
 useNavigateSpy.mockReturnValue(navigate)
 
 afterEach(() => {
-   jest.clearAllMocks()
+  jest.clearAllMocks()
 })
 
 test("renders proper inputs", () => {
@@ -44,9 +44,13 @@ test("calls onSave function", async () => {
 
   fireEvent.changeText(authorInput, testAuthor)
   fireEvent.changeText(quoteInput, testQuote)
-  fireEvent.press(saveButton)
+  await waitFor(() => {
+    fireEvent.press(saveButton)
+  })
 
   expect(saveButton).toBeDefined()
   expect(onSaveMock).toHaveBeenCalledTimes(1)
   expect(onSaveMock).toHaveBeenCalledWith(testQuote, testAuthor)
+  expect(navigate).toHaveBeenCalledTimes(1)
+  expect(navigate).toHaveBeenCalledWith("/")
 })
