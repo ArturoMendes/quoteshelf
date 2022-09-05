@@ -15,7 +15,7 @@ const QuoteForm = ({
   const navigate = useNavigate()
 
   const onPress = (event: GestureResponderEvent) => {
-    event.preventDefault()
+    event?.preventDefault()
     onSave(quote, author)
       .then(() => {
         navigate("/")
